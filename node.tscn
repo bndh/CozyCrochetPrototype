@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5pobr3j87ucn"]
+
+[ext_resource type="Script" path="res://bezier.gd" id="1_o7tjm"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_o7tjm")
