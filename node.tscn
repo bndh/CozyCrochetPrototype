@@ -2,5 +2,10 @@
 
 [ext_resource type="Script" path="res://bezier.gd" id="1_o7tjm"]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node2D"]
 script = ExtResource("1_o7tjm")
+p0 = Vector2(165, 204)
+p1 = Vector2(600, 200)
+p2 = Vector2(1000, 1000)
+p3 = Vector2(600, 200)
+pOther = Vector2(200, 700)
