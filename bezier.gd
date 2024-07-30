@@ -22,43 +22,44 @@ var cb_derivative_coefficients: Array
 var perpendicular_distance_coefficients: Array[float]
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion:
-		pOther = event.position
-		
-		perpendicular_distance_coefficients = [] # (pOther - q(t)) . q'(t) = Ht^5 + It^4 + Jt^3 + Kt^2 + Lt + M
-		perpendicular_distance_coefficients.resize(6) 
-		perpendicular_distance_coefficients[0] = 										 -(cb_derivative_coefficients[0].dot(cubic_bezier_coefficients[0]))
-		perpendicular_distance_coefficients[1] = 										 -(cb_derivative_coefficients[0].dot(cubic_bezier_coefficients[1])) - (cb_derivative_coefficients[1].dot(cubic_bezier_coefficients[0]))
-		perpendicular_distance_coefficients[2] = 										 -(cb_derivative_coefficients[0].dot(cubic_bezier_coefficients[2])) - (cb_derivative_coefficients[1].dot(cubic_bezier_coefficients[1])) - (cb_derivative_coefficients[2].dot(cubic_bezier_coefficients[0]))
-		perpendicular_distance_coefficients[3] = pOther.dot(cb_derivative_coefficients[0]) - (cb_derivative_coefficients[0].dot(cubic_bezier_coefficients[3])) - (cb_derivative_coefficients[1].dot(cubic_bezier_coefficients[2])) - (cb_derivative_coefficients[2].dot(cubic_bezier_coefficients[1]))
-		perpendicular_distance_coefficients[4] = pOther.dot(cb_derivative_coefficients[1]) - (cb_derivative_coefficients[1].dot(cubic_bezier_coefficients[3])) - (cb_derivative_coefficients[2].dot(cubic_bezier_coefficients[2]))
-		perpendicular_distance_coefficients[5] = pOther.dot(cb_derivative_coefficients[2]) - (cb_derivative_coefficients[2].dot(cubic_bezier_coefficients[3]))
-
-		queue_redraw()
-
-var held_roots = [] # testing
+	pass
+	#if event is InputEventMouseMotion:
+		#pOther = event.position
+		#
+		#perpendicular_distance_coefficients = [] # (pOther - q(t)) . q'(t) = Ht^5 + It^4 + Jt^3 + Kt^2 + Lt + M
+		#perpendicular_distance_coefficients.resize(6) 
+		#perpendicular_distance_coefficients[0] = 										 -(cb_derivative_coefficients[0].dot(cubic_bezier_coefficients[0]))
+		#perpendicular_distance_coefficients[1] = 										 -(cb_derivative_coefficients[0].dot(cubic_bezier_coefficients[1])) - (cb_derivative_coefficients[1].dot(cubic_bezier_coefficients[0]))
+		#perpendicular_distance_coefficients[2] = 										 -(cb_derivative_coefficients[0].dot(cubic_bezier_coefficients[2])) - (cb_derivative_coefficients[1].dot(cubic_bezier_coefficients[1])) - (cb_derivative_coefficients[2].dot(cubic_bezier_coefficients[0]))
+		#perpendicular_distance_coefficients[3] = pOther.dot(cb_derivative_coefficients[0]) - (cb_derivative_coefficients[0].dot(cubic_bezier_coefficients[3])) - (cb_derivative_coefficients[1].dot(cubic_bezier_coefficients[2])) - (cb_derivative_coefficients[2].dot(cubic_bezier_coefficients[1]))
+		#perpendicular_distance_coefficients[4] = pOther.dot(cb_derivative_coefficients[1]) - (cb_derivative_coefficients[1].dot(cubic_bezier_coefficients[3])) - (cb_derivative_coefficients[2].dot(cubic_bezier_coefficients[2]))
+		#perpendicular_distance_coefficients[5] = pOther.dot(cb_derivative_coefficients[2]) - (cb_derivative_coefficients[2].dot(cubic_bezier_coefficients[3]))
+#
+		#queue_redraw()
 
 func _draw():
-	var last_point = resolvevec2(cubic_bezier_coefficients, 0.0)
-	var point
-	for i in range(1, period + 1):
-		point = resolvevec2(cubic_bezier_coefficients, i as float / period)
-		draw_line(last_point, point, Color.DEEP_PINK, 5.0)
-		last_point = point
-	bezier_point = point_to_bezier(pOther, cubic_bezier_coefficients)
-	draw_line(pOther, bezier_point, Color.DEEP_SKY_BLUE, 5.0)
-	draw_circle(pOther, 5, Color.DARK_TURQUOISE)
-	
-	draw_circle(resolvevec2(cubic_bezier_coefficients, 1), 5, Color.RED)
+	pass
+	#var last_point = resolvevec2(cubic_bezier_coefficients, 0.0)
+	#var point
+	#for i in range(1, period + 1):
+		#point = resolvevec2(cubic_bezier_coefficients, i as float / period)
+		#draw_line(last_point, point, Color.DEEP_PINK, 5.0)
+		#last_point = point
+	#bezier_point = point_to_bezier(pOther, cubic_bezier_coefficients)
+	#draw_line(pOther, bezier_point, Color.DEEP_SKY_BLUE, 5.0)
+	#draw_circle(pOther, 5, Color.DARK_TURQUOISE)
+	#
+	#draw_circle(resolvevec2(cubic_bezier_coefficients, 1), 5, Color.RED)
 
 func _ready():
-	cubic_bezier_coefficients.resize(4)
-	cubic_bezier_coefficients[0] =   -p0 + 3*p1 - 3*p2 + p3 # A
-	cubic_bezier_coefficients[1] =  3*p0 - 6*p1 + 3*p2 # B
-	cubic_bezier_coefficients[2] = -3*p0 + 3*p1 # C
-	cubic_bezier_coefficients[3] =    p0 # D
-	
-	cb_derivative_coefficients = derive(cubic_bezier_coefficients) # q'(t) = Et^2 + Ft + G
+	pass
+	#cubic_bezier_coefficients.resize(4)
+	#cubic_bezier_coefficients[0] =   -p0 + 3*p1 - 3*p2 + p3 # A
+	#cubic_bezier_coefficients[1] =  3*p0 - 6*p1 + 3*p2 # B
+	#cubic_bezier_coefficients[2] = -3*p0 + 3*p1 # C
+	#cubic_bezier_coefficients[3] =    p0 # D
+	#
+	#cb_derivative_coefficients = derive(cubic_bezier_coefficients) # q'(t) = Et^2 + Ft + G
 
 func point_to_bezier(point: Vector2, bezier_coefficients: Array[Vector2]):
 	var root_intervals := isolate_roots(perpendicular_distance_coefficients, 0, 1)

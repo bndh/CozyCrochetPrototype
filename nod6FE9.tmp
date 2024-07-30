@@ -2,23 +2,23 @@
 
 [ext_resource type="Script" path="res://bezier.gd" id="1_o7tjm"]
 [ext_resource type="Script" path="res://not_sure_yet.gd" id="2_cdcq4"]
-[ext_resource type="Script" path="res://anchors/fulfillable_anchor.gd" id="3_l18gk"]
-[ext_resource type="Script" path="res://anchors/anchor_path.gd" id="4_txyt6"]
+[ext_resource type="Script" path="res://anchor.gd" id="3_l18gk"]
+[ext_resource type="Script" path="res://anchor_path.gd" id="4_txyt6"]
 
 [sub_resource type="Resource" id="Resource_c44ou"]
 script = ExtResource("3_l18gk")
-entry_direction = Vector2(1, 1)
-lenience_angle = 0.785
+enter_direction = Vector2(1, 1)
+lenience_angle = 45.0
 
 [sub_resource type="Resource" id="Resource_05w4v"]
 script = ExtResource("3_l18gk")
-entry_direction = Vector2(1, -1)
-lenience_angle = 0.785
+enter_direction = Vector2(-1, 1)
+lenience_angle = 45.0
 
 [sub_resource type="Resource" id="Resource_x5nw0"]
 script = ExtResource("4_txyt6")
 anchors = Array[ExtResource("3_l18gk")]([SubResource("Resource_c44ou"), SubResource("Resource_05w4v")])
-sample_num = 10
+sample_num = 5
 
 [node name="Node" type="Node2D"]
 script = ExtResource("1_o7tjm")
