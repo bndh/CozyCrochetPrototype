@@ -3,14 +3,18 @@ class_name AnchorPath extends Resource
 @export_category("Anchors")
 @export var anchors: Array[FulfillableAnchor]
 var anchor_index := 0
-var bridge := Anchor.new()
+var bridge: Anchor = Anchor.new()
 
 @export_category("Sampling")
 @export var sample_num: int: set = set_sample_num # Used to set the initial size of the sampling array
 var samples: CircularQueue
 var average_direction: Vector2
 
-func set_sample_num(num: int):
+func _init(anchors: Array[FulfillableAnchor] = [], sample_num: int = 10):
+	self.anchors = anchors
+	set_sample_num(sample_num)
+
+func set_sample_num(num: int = 10):
 	samples = CircularQueue.new(5)
 	sample_num = num
 

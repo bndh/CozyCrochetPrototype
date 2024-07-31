@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BezierCurve" load_steps=2 format=3 uid="uid://b3q78kxk6g7tc"]
+
+[ext_resource type="Script" path="res://curves/bezier/resources/bezier_curve.gd" id="1_2dryj"]
+
+[resource]
+script = ExtResource("1_2dryj")
+default_lenience_angle = 1.571
+p0 = Vector2(0.638, 0.61)
+p1 = Vector2(0.56, 0.125)
+p2 = Vector2(1, 1)
+p3 = Vector2(1.215, 0.282)
+goal_delta = 0.001
+max_trials = 15.0

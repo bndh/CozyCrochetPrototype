@@ -6,15 +6,14 @@ extends Node2D
 @export_category("Draw")
 @export var rectangle_size := 10
 
-var fulfilment_positions: Array[Vector2]
+@export var current_curve: BezierCurve
 
 func _ready():
 	pass
-
+	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		var evaluation_state := anchor_path.evaluate(event.relative, event.position)
-		print(evaluation_state)
+		var evaluation_state := current_curve.anchor_path.evaluate(event.relative, event.position)
 		queue_redraw()
 
 func _draw():

@@ -1,32 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5pobr3j87ucn"]
+[gd_scene load_steps=7 format=3 uid="uid://c5pobr3j87ucn"]
 
-[ext_resource type="Script" path="res://bezier.gd" id="1_o7tjm"]
-[ext_resource type="Script" path="res://not_sure_yet.gd" id="2_cdcq4"]
-[ext_resource type="Script" path="res://anchors/fulfillable_anchor.gd" id="3_l18gk"]
-[ext_resource type="Script" path="res://anchors/anchor_path.gd" id="4_txyt6"]
+[ext_resource type="Script" path="res://main.gd" id="2_cdcq4"]
+[ext_resource type="Script" path="res://curves/anchors/fulfillable_anchor.gd" id="3_l18gk"]
+[ext_resource type="Script" path="res://curves/anchors/resources/anchor_path.gd" id="4_txyt6"]
+[ext_resource type="Resource" uid="uid://b3q78kxk6g7tc" path="res://curves/bezier/resources/instances/test_curve.tres" id="4_v277g"]
 
 [sub_resource type="Resource" id="Resource_c44ou"]
 script = ExtResource("3_l18gk")
-entry_direction = Vector2(1, 1)
-lenience_angle = 0.785
-
-[sub_resource type="Resource" id="Resource_05w4v"]
-script = ExtResource("3_l18gk")
-entry_direction = Vector2(1, -1)
+entry_direction = Vector2(39, 39)
 lenience_angle = 0.785
 
 [sub_resource type="Resource" id="Resource_x5nw0"]
 script = ExtResource("4_txyt6")
-anchors = Array[ExtResource("3_l18gk")]([SubResource("Resource_c44ou"), SubResource("Resource_05w4v")])
+anchors = Array[ExtResource("3_l18gk")]([SubResource("Resource_c44ou")])
 sample_num = 10
 
-[node name="Node" type="Node2D"]
-script = ExtResource("1_o7tjm")
-p0 = Vector2(165, 204)
-p1 = Vector2(900, 200)
-p2 = Vector2(350, 1000)
-p3 = Vector2(700, 500)
-
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D"]
 script = ExtResource("2_cdcq4")
 anchor_path = SubResource("Resource_x5nw0")
+current_curve = ExtResource("4_v277g")

@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5pobr3j87ucn"]
+
+[ext_resource type="Script" path="res://curves/bezier/resources/bezier_curve.gd" id="1_o7tjm"]
+[ext_resource type="Script" path="res://main.gd" id="2_cdcq4"]
+[ext_resource type="Script" path="res://curves/anchors/fulfillable_anchor.gd" id="3_l18gk"]
+[ext_resource type="Script" path="res://curves/anchors/resources/anchor_path.gd" id="4_txyt6"]
+
+[sub_resource type="Resource" id="Resource_c44ou"]
+script = ExtResource("3_l18gk")
+entry_direction = Vector2(1, 1)
+lenience_angle = 0.785
+
+[sub_resource type="Resource" id="Resource_05w4v"]
+script = ExtResource("3_l18gk")
+entry_direction = Vector2(1, -1)
+lenience_angle = 0.785
+
+[sub_resource type="Resource" id="Resource_x5nw0"]
+script = ExtResource("4_txyt6")
+anchors = Array[ExtResource("3_l18gk")]([SubResource("Resource_c44ou"), SubResource("Resource_05w4v")])
+sample_num = 10
+
+[sub_resource type="Resource" id="Resource_e7av8"]
+script = ExtResource("1_o7tjm")
+p0 = Vector2(0, 0)
+p1 = Vector2(0, 1)
+p2 = Vector2(1, 1)
+p3 = Vector2(1, 0)
+goal_change_delta = 0.001
+max_trials = 15.0
+default_lenience_angle = 0.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("2_cdcq4")
+anchor_path = SubResource("Resource_x5nw0")
+tempcurve = SubResource("Resource_e7av8")
